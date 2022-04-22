@@ -9,7 +9,7 @@ int main() {                  // =================
    cout<<"Cantidad de minutos: ";cin>>aummin;
    struct tm* pt1 = localtime(&tSac);
    hora = pt1->tm_hour;
-   min = pt1->tm_min;
+   min = pt1->tm_min+aummin;
    
    dia = pt1->tm_mday; 
    mes = pt1->tm_mon+1;
