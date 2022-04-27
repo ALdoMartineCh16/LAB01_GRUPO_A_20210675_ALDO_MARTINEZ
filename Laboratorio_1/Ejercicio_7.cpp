@@ -4,23 +4,31 @@ using namespace std;
 int main(){
     string hora;
     string min;
-    int h, m;
+    int h, m, agregar;
     cout<<"Ingrese la hora en formato HH:MM? ";getline(cin,hora);
     cout<<"Minutos a agregar: ";getline(cin, min);
     h=stoi(hora.substr(0,2));  //TRANSFORMA EL STRING EN ENTERO
     m=stoi(hora.substr(3,2));
+    agregar=stoi(min);
 
-    // MANO AQUI PONES EL CODIGO DE AUMENTAR LA HORA
-    if((m + stoi(min))>=60){
-        if(m+stoi(min)==60){
-            h += 1;
-        }
-        h=h+(stoi(min)/60);
-        //Primer caso
-        
+    h+=agregar/60;
+    m+=agregar%60;
+    if(m>=60){
+        h++;
+        m-=60;
     }
-    m=stoi(hora.substr(3,2))+stoi(min);
-    m = m%60;
-
-    cout<<"Nueva hora: "<<h<<":"<<m<<endl;
+    while(h>=24){
+        h-=24;
+    }
+    
+    if(h>12){
+            cout<<"Nueva hora: "<<h-12<<":"<<m<<" P.M"<<endl;
+        }
+        else if(h==12){
+            cout<<"Nueva hora: "<<h<<":"<<m<<" P.M."<<endl;
+        }
+            else{
+            cout<<"Nueva hora: "<<h<<":"<<m<<" A.M"<<endl;
+        }
+    
 }
