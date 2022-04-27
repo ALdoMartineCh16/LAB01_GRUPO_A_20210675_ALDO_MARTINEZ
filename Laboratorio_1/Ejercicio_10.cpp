@@ -1,27 +1,26 @@
 #include<iostream>
-#include<math.h>
 
 using namespace std;
 
 int main(){
 
-    int num;
-    while(true){
+    int num, list[10], i=0;
+    do{
         cout<<"Ingrese un numero entre 100 y 999: ";cin>>num; 
         if(num >= 100 && num <= 999){
             break;
         } 
+    }while(true);
+    
+    while(num>1){
+        list[i]=num%2;
+        num=num/2;
+        i++;
     }
-
-    for(int i=9;i>=0;i--){
-        if(num >= pow(2,i)){
-            cout<<"1";
-            num = num - pow(2,i);
-        }
-        else{
-            cout<<"0";
-        }
+    list[i] = num;
+    
+    for(int j=i;j>=0;j--){
+        cout<<list[j];
     }
-
     return 0;
 }
